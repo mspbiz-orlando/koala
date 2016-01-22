@@ -86,7 +86,7 @@ module Koala
           # parse the body as JSON and run it through the error checker (if provided)
           # Note: Facebook sometimes sends results like "true" and "false", which aren't strictly objects
           # and cause MultiJson.load to fail -- so we account for that by wrapping the result in []
-          MultiJson.load("[#{result.body.to_s}]")[0]
+          MultiJson.load("[#{result.body.to_s}]", symbolize_keys: true)[0]
         end
       end
 
